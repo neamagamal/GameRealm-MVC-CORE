@@ -1,0 +1,10 @@
+﻿global using CrudOperation.Attributes;
+global using CrudOperation.Data;
+global using CrudOperation.Models;
+global using CrudOperation.Settings;
+global using CrudOperation.ViewModels;
+global using Microsoft.AspNetCore.Mvc;
+global using Microsoft.AspNetCore.Mvc.Rendering;
+global using Microsoft.EntityFrameworkCore;
+global using System.ComponentModel.DataAnnotations;
+global using System.Diagnostics;

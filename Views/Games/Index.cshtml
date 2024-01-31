@@ -1,0 +1,50 @@
+﻿@model IEnumerable<Game>
+@{
+    ViewData["Title"] = "Games";
+}
+<a class="btn btn-info btn-lg mt-3" asp-action="Create"><i class="bi bi-plus-square"></i> Add Games</a>
+@if (!Model.Any())
+{
+    <div class="alert  alert-warning mt-5">
+        <h4 class="alert-heading">Warning No Games!</h4>
+        <p class="mb-0">No games were added yet</p>
+    </div>
+}
+else
+{
+<div class="mt-4">
+        <table class="table table-hover">
+            <tbody>
+                @foreach(var ShowGame in Model)
+                {
+                    <tr class=" table-secondary">
+                        <td><div class="d-flex">
+                            <div class="pe-5">
+                                    <img src="@($"{FileSet.ImagesPath}/{ShowGame.Cover}")" alt="@ShowGame.Name" style="max-width: 80px" />
+                            </div>
+                                <div class="d-flex flex-column justify-content-center">
+                                    <h5 class="text-light">@ShowGame.Name</h5>
+                                    <h7 class="text-info">@ShowGame.Category.Name</h7>
+                        </div></div></td>
+                        <td class="align-middle">
+                            <div class="d-flex justify-content-end">
+                                <a  class="btn btn-info rounded rounded-5 me-2" asp-controller="Games" asp-action="Update" asp-route-id="@ShowGame.Id">
+                                    <i class="bi bi-pencil-square"></i>
+                                </a>
+                                <a href="javascript:;" class="btn btn-danger rounded rounded-5 js-delete" data-id="@ShowGame.Id">
+                                    <i class="bi bi-trash3"></i>
+                                </a>
+                            </div>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+
+
+           
+    </table>
+</div>
+}
+@section Scripts {
+    <script src="~/js/delete.js" asp-append-version="true"></script>
+}
